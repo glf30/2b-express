@@ -23,6 +23,14 @@ npm init -y
 npm install express
 ```
 
+0. C) Global Nodemon Installation
+
+Nodemon is a tool that allows us to run our node.js projects without having to restart them upon making code changes.  If we install this globally into our machines, we'll gain the `nodemon` command
+
+```
+npm install nodemon --global
+```
+
 ## What is the Express Module
 
 Express is the most popular Node web framework, and is the underlying library for a number of other popular Node web frameworks. It provides mechanisms to:
