@@ -28,7 +28,7 @@ npm install express
 Nodemon is a tool that allows us to run our node.js projects without having to restart them upon making code changes.  If we install this globally into our machines, we'll gain the `nodemon` command
 
 ```
-npm install nodemon --global
+npm install -g nodemon
 ```
 
 ## What is the Express Module
