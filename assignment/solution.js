@@ -1,10 +1,8 @@
-const express = require("express");
-
 const subways = require("./data/fixture");
-
+const express = require("express");
 const app = express();
 
-const PORT = 8080;
+const PORT = 3000;
 
 app.get("/", (req, res) => {
   res.status(200).send(subways);
@@ -18,42 +16,44 @@ app.get("/green", (req, res) => {
   res.status(200).send(subways.greenLine);
 });
 
-app.get("/:train([1-6])", (req, res) => {
-  // to show you dynamic routing
-  const train = req.params.train;
-  console.log(train);
-  const allStations = [...subways.redLine, ...subways.greenLine];
 
-  const value = allStations.filter((station) => station.train.includes(train));
+app.get("/:subway", (req, res) => {
+  //search through all of the trains in both arrays, get back ones with 1
 
-  res.json(value);
-});
+  const subwayNumber = req.params.subway;
+  // console.log(`subwayNumber: ${subwayNumber}`)
 
-app.get("/local", (req, res) => {
-  const local = ["2", "6"];
-  const allStations = [...subways.redLine, ...subways.greenLine];
-  const localStations = allStations.filter((station) =>
-    station.train.some((train) => local.includes(train))
+  const bothTrains = subways.redLine.concat(subways.greenLine); // combine red and green lines
+
+  const trains = bothTrains.filter(
+    (t) => t.train.includes(subwayNumber) //give us all trains that have a "1" in the array
   );
-  console.log(localStations);
-});
-app.get("/express", (req, res) => {
-  const expres = ["1", "3", "4", "5"];
-  const allStations = [...subways.redLine, ...subways.greenLine];
-  const expresStations = allStations.filter((station) =>
-    station.train.some((train) => expres.includes(train))
-  );
-  res.send(expresStations);
+
+  //   const trains = [];
+
+  //   for (let t of subways.redLine.concat(subways.greenLine)) {
+  //     if (t.train.includes("1")) {
+  //       trains.push(t);
+  //     }
+  //   }
+
+  //   for (let t of subways.greenLine) {
+  //     if (t.train.includes("1")) {
+  //       trains.push(t);
+  //     }
+  //   }
+
+  res.status(200).send(trains);
 });
 
-app.all("*", (req, res) => {
+app.all("/{*any}", (req, res) => {
   res
     .status(404)
     .send(
-      "The MTA is currently working to complete this application soon. Thank you for your patience"
+      "<h2>The MTA is currently working to complete this application soon. Thank you for your patience</h2>"
     );
 });
 
 app.listen(PORT, () => {
-  console.log(`Your listen on PORT: ${PORT} MTA`);
+  console.log(`Server is now listening on PORT: ${PORT}`);
 });
