@@ -151,14 +151,11 @@ For each of the following URL's, they want you respond accordingly:
 
 ### Bonus
 
-You decided to impress the MTA with your work and take this API a step further. Here are your goals:
+You decided to impress the MTA with your work and take this API a step further. Here is your goal:
 
 - If the URL ends in `"/1"`, you want to send back only the objects where `"1"` is in the `train` property
-- If the URL ends in `"/2"`, you want to send back only the objects where `"2"` is in the `train` property
-- If the URL ends in `"/3"`, you want to send back only the objects where `"3"` is in the `train` property
-- If the URL ends in `"/4"`, you want to send back only the objects where `"4"` is in the `train` property
-- If the URL ends in `"/5"`, you want to send back only the objects where `"5"` is in the `train` property
-- If the URL ends in `"/6"`, you want to send back only the objects where `"6"` is in the `train` property
+
+Now if only there was a way to get this to work for trains 1-6 WITHOUT repeating the same code.....
 
 ## Extra Bonus
 
